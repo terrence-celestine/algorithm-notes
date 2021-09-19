@@ -75,3 +75,87 @@ console.log(samenums[0]) // 1
 
 #### Accessor Functions
 
+**indexOf** - If the argument is contained in the array, returns the index for the argument. If the argument is not found then it returns - 1.
+
+```js
+let names = ["David","Cynthia","Raymond"];
+let foundDavidIndex = names.indexOf("David"); // return 0
+if (foundDavid){
+  console.log("Found David at position" + foundDavidIndex)
+}
+```
+
+#### Converting Arrays to Strings
+
+**join** - returns a string delimited by a comma
+
+**toString** - returns a string delimited by a comma.
+
+```js
+let names = ["David","Cynthia","Raymond"];
+let namesStr = names.join();
+let namesStr2 = names.toString();
+console.log(nameStr); // David, Cynthia, Raymond
+```
+
+#### Creating New Arrays from Existing Arrays
+
+**concat** - Allows you to combine 2 or more arrays and returns a new array.
+
+**splice** - Allows you to create a new array from a subset of existing array. Using indices to select the items for the new array.
+
+```js
+let students = ["Mike","Clayton","Terrill"];
+let students2 = ["Luis","Bob","David"];
+let myClass = students.concat(students2);
+console.log(myClass); // Mike, Clayton, Terrill, Luis, Bob, David
+```
+
+```js
+let student = ["Mike","Clayton","Terrill","Luis","Bob","David"];
+let topThreeStudents = student.splice(0,3);
+console.log(topThreeStudents); // Mike, Clayton, Terrill
+```
+
+#### Mutator Functions
+
+#### Adding Elements to an Array
+
+**push** - Adds one or more elements to the end of an array.
+
+**unshift** - Adds one or more elements to the front of the array.
+
+```js
+let nums = [1,2,3,4,5];
+let newNum = 6;
+nums.push(newNum);
+console.log(nums) // [1,2,3,4,5,6];
+```
+
+```js
+let nums = [1,2,3,4,5,6];
+let newNum = 0;
+nums.unshift(newNum);
+console.log(nums) // [0,1,2,3,4,5,6];
+```
+
+#### Removing elements from an Array
+
+**pop** - removes an element from the end of the array and returns it
+
+**shift** - removes an element from the front of the array.
+
+```js
+let nums = [1,2,3,4,5];
+let lastNum = nums.pop();
+console.log(lastNum); // 5
+```
+
+```js
+let nums = [1,2,3,4,5];
+let first = nums.shift();
+console.log(first); // 1
+```
+
+
+
