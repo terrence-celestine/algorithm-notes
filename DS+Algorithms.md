@@ -322,6 +322,35 @@ Point 4: 4, 4
 
 1. Create a grades object that stores a set of student grades in an object. Provide a
    function for adding a grade and a function for displaying the student’s grade average.
+
+```js
+function grades() {
+  this.data = [];
+  this.addGrade = addGrade;
+  this.average = average;
+}
+
+function addGrade(grade) {
+  this.data.push(grade);
+}
+
+function average() {
+  let total = 0;
+  let grades = this.data;
+  grades.forEach(function (g) {
+    total += g;
+  });
+  return (total / this.data.length).toFixed(2);
+}
+
+let student = new grades();
+student.addGrade(80);
+student.addGrade(65);
+student.addGrade(49);
+
+console.log(student.average());
+```
+
 2. Store a set of words in an array and display the contents both forward and backward.
 
 ```js
@@ -330,11 +359,37 @@ console.log(words.join(" ")); // Hello World
 console.log(words.reverse().join(" ")); // World Hello
 ```
 
-1. Modify the weeklyTemps object in the chapter so that it stores a month’s worth of
-  data using a two-dimensional array. Create functions to display the monthly average,
-  a specific week’s average, and all the weeks’ averages.
-2. Create an object that stores individual letters in an array and has a function for
-  displaying the letters as a single word.
-  Exercises
+3. Modify the weeklyTemps object in the chapter so that it stores a month’s worth of
+   data using a two-dimensional array. Create functions to display the monthly average,
+     a specific week’s average, and all the weeks’ averages.
+
+4. Create an object that stores individual letters in an array and has a function for
+   displaying the letters as a single word.
+
+```js
+
+function makeWord() {
+  this.data = [];
+  this.addLetter = addLetter;
+  this.combineLetters = combineLetters;
+}
+
+function addLetter(letter) {
+  this.data.push(letter);
+}
+
+function combineLetters() {
+  return this.data.join("");
+}
+
+var newWord = new makeWord();
+newWord.addLetter("h");
+newWord.addLetter("e");
+newWord.addLetter("l");
+newWord.addLetter("l");
+newWord.addLetter("o");
+console.log(newWord.combineLetters());
+```
 
 ### Lists
+
