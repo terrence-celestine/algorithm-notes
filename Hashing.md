@@ -64,8 +64,10 @@ function betterHash(string, arr){
 
 There are 2 ways to resolve collisions when two keys point to the same position in an table.
 
-1. **Seperate Chaining - ** After creating our table assign each value of array as another array. That was if 2 or more keys point to the same spot in the table we can simply add the item to the nested array.
-2. **Linear Probing -** When adding data to the table if there is a collision, look for the next available element and insert the data there.
+1. **Separate Chaining - ** After creating our table assign each value of array as another array. That was if 2 or more keys point to the same spot in the table we can simply add the item to the nested array.
+2. **Linear Probing**
+   1. **put - **  Adding data to the table if there is a collision, look for the next available element and insert the data there.
+   2. **get - ** Starts searching the hash table at the hashed position. If the hashed key matches the key passed then return the values at the hash.
 
 ```js
 function buildChains(){
@@ -88,10 +90,24 @@ function put(key,data){
     this.values[pos] = data;
   }
 }
+
+function get(key){
+    let hash = -1;
+    hash = this.betterHash(key);
+    if (hash > -1){
+        for (let i = hash; this.table[hash] != undefined; i++){
+            if (this.table[hash] == key){
+                return this.values[hash];
+            }
+        }
+    }
+    return undefined;
+}
 ```
 
-### Excercises
+### Exercises
 
 1. Use linear probing to create a simple dictionary to store the definitions of words. Your program should have two parts. The first part reads a text file that contains a list of words and definitions and stores them in a hash table. The second part of the program allows a user to enter a word and see the definition of that word.
 2. Repeat exercise 1 using separate chaining.
 3. Write a program using hashing that reads a text file and compiles a list of the words in the file with the number of times each word appears in the file.
+
