@@ -181,7 +181,85 @@ var uniqueMorseRepresentations = function(words) {
 
 ### Robot Return to Origin
 
+**Note:** This is a grid problem, using x and y coordinates.
+
+Create a counter for x and y coordinates
+
+Iterate over each character in the string 
+
+If the character is U then increment y
+
+If the character is D then decrement y
+
+If the character is L then decrement x 
+
+If the character is R increment x
+
+Return if x and y == 0.
+
+```js
+var judgeCircle = function(moves) {
+    let x = 0;
+    let y = 0;
+    for (const move of moves){
+        if (move == "U"){
+            y--;
+        }
+        else if (move == "D"){
+            y++;
+        }
+        else if (move == "L"){
+            x--;
+        }
+        else if (move == "R"){
+            x++;
+        }
+    }
+    return x == 0 && y == 0;
+};
+```
+
+
+
 ### Fizz Buzz
+
+Start by creating a temporary array to store the result.
+
+Create a starting index with the number 1.
+
+Iterate over the array using a while loop or a forloop starting at the index until n.
+
+If the current index is divisible by 15 then push "FizzBuzz" to our temporary array.
+
+If current index is divisible by 3 then push "Fizz"
+
+If current index is divisble by 5 then push "Buzz"
+
+Else push the index.
+
+Return the final result.
+
+```js
+var fizzBuzz = function(n) {
+    let i = 1; 
+    let result = [];
+    while (i <= n){
+        if (i % 3 == 0 && i % 5 == 0){
+            result.push("FizzBuzz");
+        } else if (i % 3 == 0){
+            result.push("Fizz");
+        } else if (i % 5 == 0){
+            result.push("Buzz");
+        } else {
+            result.push(String(i));
+        }
+        i++;
+    }
+    return result;
+};
+```
+
+
 
 ### First Unique Character in a String
 
@@ -264,9 +342,8 @@ const validAnagram = (str1, str2) => {
 ### Valid Palindrome
 
 ```js
+
 ```
-
-
 
 ### Valid Parentheses
 
@@ -277,3 +354,4 @@ const validAnagram = (str1, str2) => {
 ### Excel Sheet Column Number
 
 ### Palindrome Permutation
+
