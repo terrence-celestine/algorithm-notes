@@ -1,3 +1,5 @@
+## Easy
+
 ### Remove Vowels from a String
 
 1. First we need a way to check if a character in a string is a vowel.
@@ -99,6 +101,10 @@ var restoreString = function(s, indices) {
 
 ### Split a String in Balanced **Strings**
 
+```js
+
+```
+
 ### To Lower Case
 
 1. Start by setting a temp variable for our result.
@@ -179,23 +185,28 @@ var uniqueMorseRepresentations = function(words) {
 
 ### Count Substrings with Only One Distinct Letter
 
+```js
+
+```
+
 ### Robot Return to Origin
 
 **Note:** This is a grid problem, using x and y coordinates.
 
-Create a counter for x and y coordinates
+1. Create a counter for x and y coordinates
 
-Iterate over each character in the string 
+2. Iterate over each character in the string 
 
-If the character is U then increment y
+   1. If the character is U then increment y
 
-If the character is D then decrement y
+   2. If the character is D then decrement y
 
-If the character is L then decrement x 
+   3. If the character is L then decrement x 
 
-If the character is R increment x
+   4. If the character is R increment x
 
-Return if x and y == 0.
+3. Return if x and y == 0.
+
 
 ```js
 var judgeCircle = function(moves) {
@@ -219,25 +230,24 @@ var judgeCircle = function(moves) {
 };
 ```
 
-
-
 ### Fizz Buzz
 
-Start by creating a temporary array to store the result.
+1. Start by creating a temporary array to store the result.
 
-Create a starting index with the number 1.
+2. Create a starting index with the number 1.
 
-Iterate over the array using a while loop or a forloop starting at the index until n.
+3. Iterate over the array using a while loop or a forloop starting at the index until n.
 
-If the current index is divisible by 15 then push "FizzBuzz" to our temporary array.
+   1. If the current index is divisible by 15 then push "FizzBuzz" to our temporary array.
 
-If current index is divisible by 3 then push "Fizz"
+   2. If current index is divisible by 3 then push "Fizz"
 
-If current index is divisble by 5 then push "Buzz"
+   3. If current index is divisble by 5 then push "Buzz"
 
-Else push the index.
+   4. Else push the index.
 
-Return the final result.
+4. Return the final result.
+
 
 ```js
 var fizzBuzz = function(n) {
@@ -259,21 +269,26 @@ var fizzBuzz = function(n) {
 };
 ```
 
-
-
 ### First Unique Character in a String
+
+1. Start by creating a Map variable to store each character and the frequency.
+2. Iterate over string and store the character frequency.
+3. Create a temp array for each character in the string (we need this to look up the index later)
+4. Iterate over the map and check if the frequency count is 1.
+   1. If true then look up the index for the key.
+5. Return -1 if for loop doesn't break.
 
 ```js
 var firstUniqChar = function (s) {
     var charMap = new Map();
     var temp = [...s];
-    temp.forEach((char,i) => {
+    for (const str of s){
         if (charMap.get(char)){
             charMap.set(char, charMap.get(char) + 1);
         } else {
             charMap.set(char, 1);
         }
-    });
+    }
     for (const [key,value] of charMap){
         if (value === 1){
             return temp.indexOf(key);
@@ -283,7 +298,23 @@ var firstUniqChar = function (s) {
 };
 ```
 
-### Reverse String
+### Reverse Vowels
+
+1. Start by making a set of vowels to look up.
+2. Create an array from the string.
+3. Set pointers for i and j
+   1. i = 0
+   2. j = arr.length - 1
+4. Use a while loop to iterate over array.
+   1. If both arr[i] and arr[j] are vowels
+      1. swap
+      2. Increment i
+      3. Decrement j
+   2. If only arr[i] is a vowel
+      1. increment i
+   3. If only arr[j] is a vowel
+      1. decrement i
+5. Return arr as string.
 
 ```js
 const reverseVowels = (str) => {
@@ -342,10 +373,57 @@ const validAnagram = (str1, str2) => {
 ### Valid Palindrome
 
 ```js
-
+const validPalindrome = (str) => {
+  let hashTable = new Map();
+  for (const s of str) {
+    if (hashTable.get(s)) {
+      hashTable.set(s, hashTable.get(s) + 1);
+    } else {
+      hashTable.set(s, 1);
+    }
+  }
+  let missingPartner = 0;
+  for (const [key, value] of hashTable) {
+    if (value == 1) {
+      missingPartner += 1;
+    }
+  }
+  return missingPartner > 1;
+};
 ```
 
 ### Valid Parentheses
+
+1. Start by creating an tempStack to store the brackets as we come across them.
+2. Create a hashLookUp to compare the close brackets to the open ones.
+3. As we iterate over the array of brackets. 
+   1. If we see an open bracket then push the bracket onto the stack.
+   2. If we see a close bracket.
+      1. Look at the stack and see the last item on the stack.
+         1. The last item on the stack should be a matching open bracket.
+         2. If the last item on the stack is a match open bracket then pop off the stack
+         3. Else, return false 
+4. Return if tempStack.length === 0
+
+```js
+var isValid = function (s) {
+    var tempStack = [];
+    const brackets = new Map();
+    brackets.set("]","[");
+    brackets.set("}","{");
+    brackets.set(")","(");
+    for (const b of s){
+        if (!brackets.has(b)){
+            tempStack.push(b);
+        } else if (brackets.has(b) && brackets.get(b) == tempStack[tempStack.length - 1]){
+           tempStack.pop();
+        } else {
+            return false;
+        }
+    }
+    return tempStack.length === 0;
+};
+```
 
 ### Roman to Integer
 
@@ -355,3 +433,4 @@ const validAnagram = (str1, str2) => {
 
 ### Palindrome Permutation
 
+## Medium
